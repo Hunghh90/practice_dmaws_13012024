@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using practice_dmaws_hunghhth2203033.Dtos;
 using practice_dmaws_hunghhth2203033.Entities;
 
 namespace practice_dmaws_hunghhth2203033.Controllers
@@ -17,8 +18,16 @@ namespace practice_dmaws_hunghhth2203033.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<OrderTbl>> PlaceOrder(OrderTbl order)
+        public async Task<ActionResult<CreateOrder>> PlaceOrder(CreateOrder createOrder)
         {
+            var order = new OrderTbl();
+            
+                order.ItemName = createOrder.ItemName;
+                order.ItemQty = createOrder.ItemQty;
+                order.OrderAddress = createOrder.OrderAddress;
+                order.OrderDelivery = createOrder.OrderDelivery;
+                order.PhoneNumber = createOrder.PhoneNumber;
+
             _context.OrderTbls.Add(order);
             await _context.SaveChangesAsync();
 
@@ -26,7 +35,7 @@ namespace practice_dmaws_hunghhth2203033.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateOrder(int id, OrderTbl updatedOrder)
+        public async Task<IActionResult> UpdateOrder(int id, UpdateOrder updatedOrder)
         {
             if (!OrderExists(id))
             {
