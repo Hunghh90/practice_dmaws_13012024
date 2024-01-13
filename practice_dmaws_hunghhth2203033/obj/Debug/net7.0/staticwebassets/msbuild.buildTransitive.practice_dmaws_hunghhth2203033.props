@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\practice_dmaws_hunghhth2203033.props" />
+</Project>

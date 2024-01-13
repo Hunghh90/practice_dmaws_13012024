@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\practice_dmaws_hunghhth2203033.props" />
+</Project>
